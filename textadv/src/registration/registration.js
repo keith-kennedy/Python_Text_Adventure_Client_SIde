@@ -40,7 +40,25 @@ class Registration extends Component{
         this.setState =({[event.target.name]: event.target.value})
     }
 
-
+    registerHandler = (event) => {
+        event.preventDefault()
+        if(this.state.password1 === this.state.password2){
+            axios.post('https://textadv.herokuapp.com/api/registration', {
+                username: this.state.username,
+                password1: this.state.password1,
+                password2: this.state.password2,
+            })
+            .then(response => {
+                console.log(response.data)
+                this.props.login(response.data.key, this.state.username)
+            })
+            .catch(error => {
+                console.log(error.response)
+                alert(error.response.data.error)
+            })
+        }
+        
+    }
 
     render(){
         return(
@@ -48,10 +66,10 @@ class Registration extends Component{
            <RegBox>
                 <h1>Registration</h1>
                     <InputBox>
-                        <Input type="text" name="username" placeholder="username"  value={this.state.username} onChange={this.changeHandler} />
-                        <Input type="text" name="username" placeholder="password1"  value={this.state.password1} onChange={this.changeHandler}/>
-                        <Input type="text" name="username" placeholder="password2"  value={this.state.password2} onChange={this.changeHandler}/>
-                        <Btn to='/game'>Play</Btn>
+                        <Input type="text" name="username"  placeholder="Username"   value={this.state.username}  onChange={this.changeHandler}/>
+                        <Input type="text" name="password1" placeholder="Password"  value={this.state.password1} onChange={this.changeHandler}/>
+                        <Input type="text" name="password2" placeholder="Re-type Password"  value={this.state.password2} onChange={this.changeHandler}/>
+                        <Btn onClick={this.registerHandler} to='/game'>Play</Btn>
                         <Route path="/game" component={Game} />
                     </InputBox>
             </RegBox>

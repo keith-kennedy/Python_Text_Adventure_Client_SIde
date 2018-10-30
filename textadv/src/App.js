@@ -7,18 +7,23 @@ import Login from './login/login'
 import styled from 'styled-components';
 
 const AppBackground = styled.div`
-
   text-align: center;
 `
 class App extends Component {
+ 
+  handleLogin = (token, username) =>{
+    localStorage.setItem('token', token)
+    localStorage.setItem('username', username)
+  }
+
   render() {
     return (
       <AppBackground>
       <div>
       <Home />
       </div>
-      <Route path="/registration" component={Registration} />
-      <Route path="/login" component={Login} />
+      <Route path="/registration" render={props => <Registration {...props} login = {this.handleLogin}/>} />
+      <Route path="/login" render={props => <Login {...props} login = {this.handleLogin}/>} />
       </AppBackground>
     );
   }
