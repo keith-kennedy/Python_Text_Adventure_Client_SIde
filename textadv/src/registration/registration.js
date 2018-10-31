@@ -58,23 +58,21 @@ class Registration extends Component{
                 alert(error.response.data.error)
             })
         }
-        
+        this.setState({username: '', password1: '', password2: ''})        
     }
 
     render(){
         return(
-            <div className='reg-page'>
            <RegBox>
                 <h1>Registration</h1>
                     <InputBox>
                         <Input name='username' placeholder="Username"   value={this.state.username}  onChange={this.changeHandler}/>
                         <Input name='password1' placeholder="Password"  value={this.state.password1} onChange={this.changeHandler}/>
                         <Input name='password2' placeholder="Re-type Password"  value={this.state.password2} onChange={this.changeHandler}/>
-                        <Btn onClick={this.registerHandler} to='/game'>Play</Btn>
-                        <Route path="/game" component={Game} />
+                        {/* <Route path="/games" render={props => <Game {...props}/>} /> */}
+                        <button onClick={this.registerHandler}>Play</button>
                     </InputBox>
             </RegBox>
-            </div> 
         )
     }
 }

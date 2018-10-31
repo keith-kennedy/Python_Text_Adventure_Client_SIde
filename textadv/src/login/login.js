@@ -60,17 +60,15 @@ class Login extends Component {
 
     render(){
         return(
-            <div className='reg-page'>
             <RegBox>
                 <h1>Login</h1>
                     <InputBox>
                         <Input  placeholder="Username" name='username' value={this.state.username} onChange={this.changeHandler} />
                         <Input  placeholder="Password" name='password'  value={this.state.password} onChange={this.changeHandler}/>
-                        <Btn to='/game'>Play</Btn>
-                        <Route path="/game" component={Game} />
+                        {/* <Route path="/games" render={props => <Game {...props}/>} /> */}
+                        <button onSubmit={this.handleLogin}>Play</button>
                     </InputBox>
             </RegBox>
-            </div> 
         )
     }
 }
