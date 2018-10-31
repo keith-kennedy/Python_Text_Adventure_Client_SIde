@@ -6,21 +6,20 @@ const AppHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-image: linear-gradient(to right, lightblue , seagreen);
+  background: white
   margin: auto; 
   border-radius: 20px;
-  padding: 10px; 
-  margin: 10px;  
+  padding: 10px;  
 `
 const NavItem = styled(NavLink)`
-    color: white;
+    color: black;
     text-decoration: none;
     padding:3px;
     font-size: 20px; 
     
     &:hover {
-        background-color: white;
-        color: seagreen;
+        background-color:black;
+        color: white;
         border-radius: 5px; 
       }
 `

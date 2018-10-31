@@ -21,8 +21,8 @@ const Input =styled.input`
 `
 const Btn = styled(NavLink)`
     text-decoration: none; 
-    color: white;
-    background-image: linear-gradient(to right, lightblue , seagreen);
+    color: black;
+    background: white;
     padding: 20px; 
     border-radius: 20px; 
     margin: 5px; 
@@ -51,6 +51,7 @@ class Registration extends Component{
             .then(response => {
                 console.log(response.data)
                 this.props.login(response.data.key, this.state.username)
+                this.props.history.push('/game')
             })
             .catch(error => {
                 console.log(error.response)

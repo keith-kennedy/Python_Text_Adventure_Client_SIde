@@ -21,8 +21,8 @@ const Input =styled.input`
 `
 const Btn = styled(NavLink)`
     text-decoration: none; 
-    color: white;
-    background-image: linear-gradient(to right, lightblue , seagreen);
+    color: black;
+    background: white;
     padding: 20px; 
     border-radius: 20px; 
     margin: 5px; 
