@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import Game from '../game/game';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -29,6 +27,13 @@ class Login extends Component {
             password: '',
             loggedIn: false,
         } 
+    }
+    componentDidMount = () => {
+        let token = localStorage.getItem('token');
+        let username = localStorage.getItem('username');
+        if (token && username) {
+          this.setState({loggedIn: true})
+        }
     }
     changeHandler = (event) => {
         this.setState({[event.target.name]: event.target.value})

@@ -9,13 +9,19 @@ import styled from 'styled-components';
 
 const AppBackground = styled.div`
   text-align: center; 
-  animation: colorchange 10s infinite;
+  animation: colorchange 20s infinite;
   height: 650px; 
   @keyframes colorchange{
     0% {background-color: red;}
-    25% {background-color: yellow;}
-    50% {background-color: blue;}
-    75% {background-color: green;}
+    10% {background-color: orange;}
+    20% {background-color: yellow;}
+    30% {background-color: green;}
+    40% {background-color: blue;}
+    50% {background-color: purple;}
+    60% {background-color: pink;}
+    70% {background-color: lightcoral;}
+    80% {background-color: lightyellow;}
+    90% {background-color: white;}
     100% {background-color: red;}
   }
 `

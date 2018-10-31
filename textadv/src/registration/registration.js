@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import Game from '../game/game';
 import styled from 'styled-components'; 
 import axios from 'axios';
 
