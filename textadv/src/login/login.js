@@ -19,14 +19,6 @@ const Input =styled.input`
     height: 30px; 
     margin: 5px; 
 `
-const Btn = styled(NavLink)`
-    text-decoration: none; 
-    color: black;
-    background: white;
-    padding: 20px; 
-    border-radius: 20px; 
-    margin: 5px; 
-`
 
 
 class Login extends Component {
@@ -35,6 +27,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            loggedIn: false,
         } 
     }
     changeHandler = (event) => {
@@ -42,6 +35,7 @@ class Login extends Component {
     }
     handleLogin = (event) => {
         event.preventDefault()
+        console.log("lansnjscnk")
         axios.post('https://textadv.herokuapp.com/api/login', {
             username: this.state.username,
             password: this.state.password
@@ -49,6 +43,7 @@ class Login extends Component {
         .then(response => {
             console.log(response, "response line 50 of log in")
             this.props.login(response.data.key, this.state.username)
+            this.setState({loggedIn: true})
             this.props.history.push('/game')
         })
         .catch(error => {
@@ -62,11 +57,11 @@ class Login extends Component {
         return(
             <RegBox>
                 <h1>Login</h1>
-                    <InputBox>
+                    <InputBox onSubmit={this.handleLogin}>
                         <Input  placeholder="Username" name='username' value={this.state.username} onChange={this.changeHandler} />
-                        <Input  placeholder="Password" name='password'  value={this.state.password} onChange={this.changeHandler}/>
-                        {/* <Route path="/games" render={props => <Game {...props}/>} /> */}
-                        <button onSubmit={this.handleLogin}>Play</button>
+                        <Input type='password' placeholder="Password" name='password'  value={this.state.password} onChange={this.changeHandler}/>
+
+                        <button>Play</button>
                     </InputBox>
             </RegBox>
         )

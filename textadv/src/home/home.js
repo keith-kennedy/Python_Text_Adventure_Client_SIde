@@ -27,7 +27,16 @@ const NavItem = styled(NavLink)`
 class Home extends Component{
     constructor(){
         super();
+        this.state ={
+            loggedIn: false
+        }
     }
+    // handleLogout = () => {
+    //     if(loggedIn === true){
+
+    //     }
+    // }
+
     render(){
         return(
         <AppHeader>

@@ -19,14 +19,7 @@ const Input =styled.input`
     height: 30px; 
     margin: 5px; 
 `
-const Btn = styled(NavLink)`
-    text-decoration: none; 
-    color: black;
-    background: white;
-    padding: 20px; 
-    border-radius: 20px; 
-    margin: 5px; 
-`
+
 class Registration extends Component{
     constructor(props){
         super(props);

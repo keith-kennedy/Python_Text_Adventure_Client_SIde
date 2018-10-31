@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Home from './home/home'
+import Game from './game/game'
 import { Route } from 'react-router-dom';
 import Registration from './registration/registration';
 import Login from './login/login'
@@ -34,6 +35,7 @@ class App extends Component {
       </div>
       <Route path="/registration" render={props => <Registration {...props} login = {this.handleLogin}/>} />
       <Route path="/login" render={props => <Login {...props} login = {this.handleLogin}/>} />
+      <Route path="/game" render={props => <Game {...props}/>} />
       </div>
       </AppBackground>
     );
