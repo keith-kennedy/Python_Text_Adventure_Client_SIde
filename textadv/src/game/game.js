@@ -88,11 +88,12 @@ class Game extends Component{
             const key = localStorage.getItem('key')
             axios.post('https://textadv.herokuapp.com/api/adv/say/', {"message": this.state.input},{
                 headers: {
-                    Login: `Token ${key}`,
-                    "Type": 'application/json'
+                    Authorization: `Token ${key}`,
+                    "Content-Type": 'application/json'
                 }
             })
             .then(response => {
+                console.log('say')
                 this.setState({
                     input: ''
                 }, () => this.updatePast(response.data.message));
@@ -102,14 +103,14 @@ class Game extends Component{
         componentDidMount = () => {
             const key = localStorage.getItem('key')
             axios
-                .get('https://textadv.herokuapp.com/api/adv/init/', {headers: {Login: `Token ${key}`} })
+                .get('https://textadv.herokuapp.com/api/adv/init/', {headers: {Authorization: `Token ${key}`} })
                 .then(response => {
                    this.pusher(response.data.uuid);
                    this.setState({
                        title:response.data.title,
                        description:response.data.description,
                        players: response.data.players
-                   }, () => this.update());
+                   }, () => this.updatePast());
             })
                 .catch(err => console.log(err));
                 window.addEventListener('keydown', this.KeyDown);
@@ -128,8 +129,8 @@ class Game extends Component{
             const key = localStorage.getItem('key')
             axios.post('https://textadv.herokuapp.com/api/adv/move/', {'direction': direction}, {
                 headers: {
-                    Login: `Token ${key}`,
-                    "Type": "application/json"
+                    Authorization: `Token ${key}`,
+                    "Content-Type": "application/json"
                 }
             })
             .then(response => {
@@ -158,7 +159,7 @@ class Game extends Component{
                                 {past.map(pastItem => {
                                     if(pastItem['message']){
                                         return(
-                                            <div key = {Math.random()}>
+                                            <div key={Math.random()}>
                                                 <div>{pastItem.message}</div>
                                             </div>)
                                     }else{
@@ -179,6 +180,7 @@ class Game extends Component{
                             placeholder='Message other players'
                             onChange={this.changeHandler}
                             value={this.state.input}
+                            name='input'
                             />
                         </form>
                 </div>
