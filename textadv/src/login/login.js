@@ -38,7 +38,7 @@ class Login extends Component {
         } 
     }
     changeHandler = (event) => {
-        this.setState =({[event.target.name]: event.target.value})
+        this.setState({[event.target.name]: event.target.value})
     }
     handleLogin = (event) => {
         event.preventDefault()
@@ -47,12 +47,15 @@ class Login extends Component {
             password: this.state.password
         })
         .then(response => {
+            console.log(response, "response line 50 of log in")
             this.props.login(response.data.key, this.state.username)
+            this.props.history.push('/game')
         })
         .catch(error => {
             console.log(error.response)
             alert(error.response.data.error)
         })
+        this.setState({username: '', password: ''})
     }
 
     render(){
@@ -61,9 +64,9 @@ class Login extends Component {
             <RegBox>
                 <h1>Login</h1>
                     <InputBox>
-                        <Input type="text" name="username" placeholder="Username"  value={this.state.username} onChange={this.changeHandler} />
-                        <Input type="text" name="password" placeholder="Password"  value={this.state.password} onChange={this.changeHandler}/>
-                        <Btn onClick={this.handleLogin} to='/game'>Play</Btn>
+                        <Input  placeholder="Username" name='username' value={this.state.username} onChange={this.changeHandler} />
+                        <Input  placeholder="Password" name='password'  value={this.state.password} onChange={this.changeHandler}/>
+                        <Btn to='/game'>Play</Btn>
                         <Route path="/game" component={Game} />
                     </InputBox>
             </RegBox>

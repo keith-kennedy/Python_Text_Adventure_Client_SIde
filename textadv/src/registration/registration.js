@@ -37,7 +37,7 @@ class Registration extends Component{
         } 
     }
     changeHandler = (event) => {
-        this.setState =({[event.target.name]: event.target.value})
+        this.setState({[event.target.name]: event.target.value})
     }
 
     registerHandler = (event) => {
@@ -66,9 +66,9 @@ class Registration extends Component{
            <RegBox>
                 <h1>Registration</h1>
                     <InputBox>
-                        <Input type="text" name="username"  placeholder="Username"   value={this.state.username}  onChange={this.changeHandler}/>
-                        <Input type="text" name="password1" placeholder="Password"  value={this.state.password1} onChange={this.changeHandler}/>
-                        <Input type="text" name="password2" placeholder="Re-type Password"  value={this.state.password2} onChange={this.changeHandler}/>
+                        <Input name='username' placeholder="Username"   value={this.state.username}  onChange={this.changeHandler}/>
+                        <Input name='password1' placeholder="Password"  value={this.state.password1} onChange={this.changeHandler}/>
+                        <Input name='password2' placeholder="Re-type Password"  value={this.state.password2} onChange={this.changeHandler}/>
                         <Btn onClick={this.registerHandler} to='/game'>Play</Btn>
                         <Route path="/game" component={Game} />
                     </InputBox>

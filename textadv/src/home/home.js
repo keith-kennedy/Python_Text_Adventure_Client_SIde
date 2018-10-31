@@ -34,6 +34,7 @@ class Home extends Component{
         <AppHeader>
           <NavItem to="/registration">Registration</NavItem>
           <NavItem className="nav-item" to="/login">Login</NavItem>
+          <NavItem className="nav-item" to="/">Logout</NavItem>
         </AppHeader>
         )
     }
