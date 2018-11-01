@@ -47,7 +47,12 @@ const ConvoInvo = styled.div`
 const Room = styled.div`
     padding: 5px; 
 `
+const TextBoxItem = styled.div`
+    margin: 5px 0; 
+`
 const Msg = styled.div`
+    margin: 5px 0;
+    color: red; 
 `
 class Game extends Component{
         constructor(){
@@ -159,8 +164,6 @@ class Game extends Component{
             .catch(err => console.log(err));
         }
 
-
-
         render() {
             const past = this.state.past.slice().reverse();
             return(
@@ -171,15 +174,15 @@ class Game extends Component{
                             {past.map(pastItem => {
                                 if(pastItem['message']){
                                     return(
-                                        <div key={Math.random()}>
-                                            <div>{pastItem.message}</div>
-                                        </div>)
+                                        <Room key={Math.random()}>
+                                            <Msg>{pastItem.message}</Msg>
+                                        </Room>)
                                 }else{
                                     return(
                                         <Room key={Math.random()}>
-                                            <div>{pastItem.title}</div>
-                                            <div>{pastItem.description}</div>
-                                            <div>{pastItem.players.join(", ")}</div>
+                                            <TextBoxItem>{pastItem.title}</TextBoxItem>
+                                            <TextBoxItem>{pastItem.description}</TextBoxItem>
+                                            <TextBoxItem>{pastItem.players.join(", ")}</TextBoxItem>
                                         </Room>
                                     )
                                 }
