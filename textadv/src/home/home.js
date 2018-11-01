@@ -27,22 +27,13 @@ const NavItem = styled(NavLink)`
 class Home extends Component{
     constructor(){
         super();
-        this.state ={
-            loggedIn: false
-        }
     }
-    // handleLogout = () => {
-    //     if(loggedIn === true){
-
-    //     }
-    // }
 
     render(){
         return(
         <AppHeader>
           <NavItem to="/registration">Registration</NavItem>
           <NavItem className="nav-item" to="/login">Login</NavItem>
-          <NavItem className="nav-item" to="/">Logout</NavItem>
         </AppHeader>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { NavLink} from 'react-router-dom';
 import Pusher from 'pusher-js';
 import axios from 'axios';
 
@@ -37,6 +38,8 @@ const GameInput = styled.input`
 `
 const ConvoInvo = styled.div`
     display: flex; 
+    justify-content: center;
+    align-items: center; 
     width: 950%;
     height: 165px;
     border-radius: 20px;
@@ -54,6 +57,18 @@ const Msg = styled.div`
     margin: 5px 0;
     color: red; 
 `
+const NavItem = styled(NavLink)`
+    color: black;
+    text-decoration: none;
+    padding:3px;
+    font-size: 30px; 
+    
+    &:hover {
+        background-color:black;
+        color: white;
+        border-radius: 5px; 
+      }
+`
 class Game extends Component{
         constructor(){
             super();
@@ -64,6 +79,7 @@ class Game extends Component{
             description:'',
             past: [],
             players: [],
+            loggedIn: true,
             }
         }
 
@@ -163,6 +179,15 @@ class Game extends Component{
             })
             .catch(err => console.log(err));
         }
+        logout = (e) => {
+            e.preventDefault();
+            localStorage.removeItem('token')
+            localStorage.removeItem('username')
+            this.setState({
+                loggedIn: false,
+                user: '',
+            })
+        }
 
         render() {
             const past = this.state.past.slice().reverse();
@@ -203,6 +228,9 @@ class Game extends Component{
                     <ConvoInvo>
                     </ConvoInvo>
                     <ConvoInvo>
+                        <form onSubmit ={this.logout}>
+                        <NavItem to="/">Logout</NavItem>
+                        </form>
                     </ConvoInvo>
                 </Sections>
             </WholePage>
