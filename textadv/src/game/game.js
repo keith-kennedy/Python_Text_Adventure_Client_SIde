@@ -17,7 +17,7 @@ const Sections = styled.section`
 `
 const TextBox = styled.div`
     display: flex; 
-    width: 350%;
+    width: 60%;
     height:350px;
     border: 5px solid lightgray;
     border-radius: 20px;
@@ -85,7 +85,7 @@ class Game extends Component{
         message = event => {
             event.preventDefault();
             if(this.state.input ===''){return};
-            const key = localStorage.getItem('key')
+            const key = localStorage.getItem('token')
             axios.post('https://textadv.herokuapp.com/api/adv/say/', {"message": this.state.input},{
                 headers: {
                     Authorization: `Token ${key}`,
@@ -101,7 +101,8 @@ class Game extends Component{
             .catch(err => console.log(err));
         }
         componentDidMount = () => {
-            const key = localStorage.getItem('key')
+            const key = localStorage.getItem('token')
+            console.log(key, "this is the key")
             axios
                 .get('https://textadv.herokuapp.com/api/adv/init/', {headers: {Authorization: `Token ${key}`} })
                 .then(response => {
@@ -112,7 +113,7 @@ class Game extends Component{
                        players: response.data.players
                    }, () => this.updatePast());
             })
-                .catch(err => console.log(err));
+                .catch(err => console.log(err, "cdm"));
                 window.addEventListener('keydown', this.KeyDown);
         }
 
@@ -126,7 +127,7 @@ class Game extends Component{
         }
 
         move = (direction) => {
-            const key = localStorage.getItem('key')
+            const key = localStorage.getItem('token')
             axios.post('https://textadv.herokuapp.com/api/adv/move/', {'direction': direction}, {
                 headers: {
                     Authorization: `Token ${key}`,
