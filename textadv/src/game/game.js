@@ -12,20 +12,22 @@ const Sections = styled.section`
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 530px;
+    left: 380px;
     width: 4%;
 `
 const TextBox = styled.div`
     display: flex; 
+    text-align: left;
     width: 60%;
     height:350px;
     border: 5px solid lightgray;
     border-radius: 20px;
     background: white; 
     margin: 5px;
+    overflow-y: auto;
 `
 const GameInput = styled.input`
-    width: 350%;
+    width: 60%;
     display: flex; 
     margin: 5px;
     height: 40px;
@@ -42,10 +44,16 @@ const ConvoInvo = styled.div`
     background: white;
     border: 5px solid lightgray;
 `
+const Room = styled.div`
+    padding: 5px; 
+`
+const Msg = styled.div`
+`
 class Game extends Component{
         constructor(){
             super();
             this.state={
+            user: '',
             input: '',
             title: '',
             description:'',
@@ -73,6 +81,7 @@ class Game extends Component{
                 newItem = {message: message};
             }else{
                 newItem = {
+                    user: this.state.user,
                     title: this.state.title,
                     description: this.state.description,
                     players: this.state.players
@@ -108,6 +117,7 @@ class Game extends Component{
                 .then(response => {
                    this.pusher(response.data.uuid);
                    this.setState({
+                       user: response.data.user,
                        title:response.data.title,
                        description:response.data.description,
                        players: response.data.players
@@ -139,6 +149,7 @@ class Game extends Component{
                     this.updatePast(response.data.error_msg);
                 }else{
                     this.setState({
+                        user: response.data.user,
                         title: response.data.title,
                         description:response.data.description,
                         players: response.data.players
@@ -155,41 +166,41 @@ class Game extends Component{
             return(
             <WholePage>
                 <div>
-                        <TextBox>
-                            <div>
-                                {past.map(pastItem => {
-                                    if(pastItem['message']){
-                                        return(
-                                            <div key={Math.random()}>
-                                                <div>{pastItem.message}</div>
-                                            </div>)
-                                    }else{
-                                        return(
-                                            <div key={Math.random()}>
-                                                <div>{pastItem.title}</div>
-                                                <div>{pastItem.description}</div>
-                                                <div>{pastItem.players.join(", ")}</div>
-                                            </div>
-                                        )
-                                    }
+                    <TextBox>
+                        <div>
+                            {past.map(pastItem => {
+                                if(pastItem['message']){
+                                    return(
+                                        <div key={Math.random()}>
+                                            <div>{pastItem.message}</div>
+                                        </div>)
+                                }else{
+                                    return(
+                                        <Room key={Math.random()}>
+                                            <div>{pastItem.title}</div>
+                                            <div>{pastItem.description}</div>
+                                            <div>{pastItem.players.join(", ")}</div>
+                                        </Room>
+                                    )
                                 }
-                            )}
-                            </div>
+                            }
+                        )}
+                        </div>
                         </TextBox>
-                        <form onSubmit = {this.message}>
-                        <GameInput
-                            placeholder='Message other players'
-                            onChange={this.changeHandler}
-                            value={this.state.input}
-                            name='input'
-                            />
-                        </form>
-                </div>
+                            <form onSubmit = {this.message}>
+                                <GameInput
+                                placeholder='Message other players'
+                                onChange={this.changeHandler}
+                                value={this.state.input}
+                                name='input'
+                                />
+                            </form>
+                        </div>
                 <Sections>
-                        <ConvoInvo>
-                        </ConvoInvo>
-                        <ConvoInvo>
-                        </ConvoInvo>
+                    <ConvoInvo>
+                    </ConvoInvo>
+                    <ConvoInvo>
+                    </ConvoInvo>
                 </Sections>
             </WholePage>
             )
