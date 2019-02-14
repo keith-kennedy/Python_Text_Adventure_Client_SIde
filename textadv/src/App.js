@@ -26,7 +26,7 @@ const AppBackground = styled.div`
   }
 `
 class App extends Component {
- 
+ //handleLogin is used to retrieve the token and username from the api.
   handleLogin = (token, username) =>{
     localStorage.setItem('token', token)
     localStorage.setItem('username', username)

@@ -22,15 +22,26 @@ class Registration extends Component{
     constructor(props){
         super(props);
         this.state = {
+            //create empty objects for the registration. 
             username: '',
             password1: '',
             password2: ''
         } 
     }
+    //allows for change in the input.
     changeHandler = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
-
+    //the registerHandler handles the registration of a new user.
+    //before you move onto the the .post you must check the two passwords 
+    //being passed in, and they need to be the same inorder to register.
+    //in the post once the passwords are the same and the username has not
+    //been used post the new username and password to the api/registration page.
+    //.then use the loginHandler from App.js, which is passed in as 
+    //login, this is used to register the user. generates a key and also username.
+    //then push the info to ./game page and also save the info in the history object.
+    //then reset the inputs on the registration page to blank.
+    
     registerHandler = (event) => {
         event.preventDefault()
         if(this.state.password1 === this.state.password2){

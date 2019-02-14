@@ -72,8 +72,8 @@ const NavItem = styled(NavLink)`
 class Game extends Component{
         constructor(){
             super();
-            this.state={
-            user: '',
+            this.state={  //establish the different state objects that will use the necessary information from api.
+            user: '',  
             input: '',
             title: '',
             description:'',
@@ -86,7 +86,10 @@ class Game extends Component{
         changeHandler = (event) => {
             this.setState({[event.target.name]: event.target.value})
         }
-
+        //pusher is used to gain access to the api, from the pusher website.
+        //using the APP_KEY from the pusher channel that you established
+        //and the cluster: us2. Bind that with the new channel that you want to
+        //suscribe to 'p-channel'. 
         pusher = (uuid) => {
             const p = new Pusher('f2508e405db0f184782c', {cluster: 'us2'});
             const channel = p.subscribe(`p-channel-${uuid}`, uuid);
@@ -94,7 +97,10 @@ class Game extends Component{
                 this.updatePast(data.message);
             });
         };
-
+        //updatePast is storing all of the past locations and movements, 
+        //essectially everything that you have seen or had inputted will 
+        //be stored. Then create a newItem object which will be what the 
+        //new state will be set to.
         updatePast = (message = null) =>{
             const past = this.state.past;
             let newItem;
@@ -111,7 +117,12 @@ class Game extends Component{
             past.unshift(newItem)
             this.setState({past: past})
         }
-
+        //massage will send messages so that other players can see them.
+        //again you must create a object that has access to the token from local storage
+        //post whatever the message is to the api, but make sure it is the right route.
+        //the message will now be equal to whatever is put into the input.
+        //.then will change the state of input and also add whatever the new
+        //input is and post it in updatePast.
         message = event => {
             event.preventDefault();
             if(this.state.input ===''){return};
@@ -130,6 +141,11 @@ class Game extends Component{
             })
             .catch(err => console.log(err));
         }
+        //componentDidMount is access the api to get the information avaliable on it.
+        //once the get has gone through successfully, you can move on to the then.
+        //the .then will user this.pusher to get the data from the uuid, api.
+        //and also you must change the state of the title, description, and players objects.
+        //but also call updatePast at the end so that you can push information into it.
         componentDidMount = () => {
             const key = localStorage.getItem('token')
             console.log(key, "this is the key")
@@ -147,7 +163,8 @@ class Game extends Component{
                 .catch(err => console.log(err, "cdm"));
                 window.addEventListener('keydown', this.KeyDown);
         }
-
+        //all that Keydown is doing is allowing the user to use the arrow keys
+        //to move around the map.
         KeyDown = event => {
             const code = event.keyCode;
             const mapping = {37: 'w', 38: 'n', 39: 'e', 40: 's'};
@@ -156,7 +173,13 @@ class Game extends Component{
                 this.move(direction)
             }
         }
-
+        //move is another post function that send the new directions the
+        //player takes. This function allows there to 
+        //be a new location sent to the user. the new location corresponds with the 
+        //right direction. You must get the token, then post the new direction. 
+        //if all of that goes through correctly .then is what happens.
+        //.then will change the state of the current objects. moving their location.
+        //also again updating the updatePast function.
         move = (direction) => {
             const key = localStorage.getItem('token')
             axios.post('https://textadv.herokuapp.com/api/adv/move/', {'direction': direction}, {

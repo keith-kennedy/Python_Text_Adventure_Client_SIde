@@ -23,11 +23,15 @@ class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
+            //create three different objects, two that are empty strings.
+            //and one that is a boolean.
             username: '',
             password: '',
             loggedIn: false,
         } 
     }
+    //not sure if I even need this componentDidMount. Looks like it is 
+    //doing the same thing as the handleLogin.
     componentDidMount = () => {
         let token = localStorage.getItem('token');
         let username = localStorage.getItem('username');
@@ -38,6 +42,13 @@ class Login extends Component {
     changeHandler = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
+    //handleLogin is very similar to the registration, the url is different.
+    //you will send the two objects passed in username and the password.
+    //in the .then
+    //use the passed in loginHandler passed in as login.
+    //retrieve the key and the username with the ones passed in from the inputs.
+    //change the state of the loggedin to true.
+    //save to history and push to ./game.
     handleLogin = (event) => {
         event.preventDefault()
         console.log("lansnjscnk")
