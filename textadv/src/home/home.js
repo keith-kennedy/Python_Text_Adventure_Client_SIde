@@ -8,6 +8,7 @@ const AppHeader = styled.header`
   justify-content: space-evenly;
   background: white
   margin: auto; 
+  margin-top:10px;
   border-radius: 20px;
   padding: 10px;  
 `
