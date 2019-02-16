@@ -249,8 +249,6 @@ class Game extends Component{
                         </div>
                 <Sections>
                     <ConvoInvo>
-                    </ConvoInvo>
-                    <ConvoInvo>
                         <form onSubmit ={this.logout}>
                         <NavItem to="/">Logout</NavItem>
                         </form>
