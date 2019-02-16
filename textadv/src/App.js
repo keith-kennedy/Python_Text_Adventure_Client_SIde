@@ -37,7 +37,7 @@ class App extends Component {
       <AppBackground>
       <div>
       <div>
-      <Home path="/registration"/>
+      <Route path="/registration" render={props => <Home/>} />
       </div>
       <Route path="/registration" render={props => <Registration {...props} login = {this.handleLogin}/>} />
       <Route path="/login" render={props => <Login {...props} login = {this.handleLogin}/>} />
