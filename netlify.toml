@@ -9,3 +9,10 @@ ID = "16f2cd72-e874-4237-80ec-bba24597ccda"
   publish = "textadv/build/"
   # This will be your default build command
   command = "yarn build"
+  [[redirects]]
+    from = "/*"
+
+    to = "/index.html"
+
+    status = 200
+
