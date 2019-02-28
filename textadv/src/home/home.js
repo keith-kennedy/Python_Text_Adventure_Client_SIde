@@ -15,14 +15,12 @@ const NavItem = styled(NavLink)`
     text-decoration: none;
     padding:3px;
     font-size: 20px; 
-    
     &:hover {
         background-color:black;
         color: white;
         border-radius: 5px; 
       }
 `
-
 class Home extends Component{
     constructor(){
         super();
@@ -31,8 +29,10 @@ class Home extends Component{
     render(){
         return(
         <AppHeader>
+        <>
           <NavItem to="/registration">Registration</NavItem>
           <NavItem className="nav-item" to="/login">Login</NavItem>
+        </>
         </AppHeader>
         )
     }
