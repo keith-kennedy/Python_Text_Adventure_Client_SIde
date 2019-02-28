@@ -22,9 +22,6 @@ const NavItem = styled(NavLink)`
       }
 `
 class Home extends Component{
-    constructor(){
-        super();
-    }
 
     render(){
         return(
