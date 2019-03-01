@@ -12,6 +12,7 @@ const AppBackground = styled.div`
   text-align: center; 
   height: 100vh; 
 `
+
 class App extends Component {
  //handleLogin is used to retrieve the token and username from the api.
   handleLogin = (token, username) =>{
@@ -26,7 +27,7 @@ class App extends Component {
       <div>
       <Home/> 
       </div>
-      <Route path="/" render={props => <LandingPage {...props} />}  /> 
+      <Route exact path="/" render={props => <LandingPage {...props} />}  /> 
       <Route path="/registration" render={props => <Registration {...props} login = {this.handleLogin}/>} />
       <Route path="/login" render={props => <Login {...props} login = {this.handleLogin}/>} />
       <Route path="/game" render={props => <Game {...props}/>} />

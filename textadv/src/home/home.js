@@ -6,14 +6,14 @@ const AppHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background: white
   margin: auto; 
   padding: 10px;  
+  border-bottom: 10px solid #DCEDC2; 
 `
 const NavItem = styled(NavLink)`
     color: black;
     text-decoration: none;
-    padding:3px;
+    padding:5px;
     font-size: 20px; 
     &:hover {
         background-color:black;

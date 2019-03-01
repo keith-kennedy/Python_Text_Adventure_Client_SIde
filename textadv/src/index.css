@@ -1,34 +1,34 @@
 @keyframes colorchange {
   0%,
   100% {
-    background-color: red;
+    background-color: #E1F5C4;
   }
   10% {
-    background-color: orange;
+    background-color: #EDE574;
   }
   20% {
-    background-color: yellow;
+    background-color: #F9D423;
   }
   30% {
-    background-color: green;
+    background-color: #FC913A;
   }
   40% {
-    background-color: blue;
+    background-color: #FF4E50;
   }
   50% {
-    background-color: purple;
+    background-color: #A7226E;
   }
   60% {
-    background-color: pink;
+    background-color: #2F9599;
   }
   70% {
-    background-color: lightcoral;
+    background-color:#A8E6CE;
   }
   80% {
-    background-color: lightyellow;
+    background-color:#DCEDC2;
   }
   90% {
-    background-color: yellow;
+    background-color: #E1F5C4;
   }
 }
 
@@ -40,7 +40,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  animation: colorchange 20s infinite;
+  /* animation: colorchange 15s infinite; */
 }
 
 code {
