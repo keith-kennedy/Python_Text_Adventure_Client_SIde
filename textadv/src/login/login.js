@@ -7,7 +7,7 @@ const hmove = keyframes`
     left: -5px;
     }
     100% {
-    left: 250px;
+    left: 500px;
     }
 `;
 const vmove = keyframes`
@@ -15,7 +15,7 @@ const vmove = keyframes`
     top: -5px;
     }
     100% {
-    top:328px;
+    top:528px;
     }
 `;
 //---Components---//
@@ -27,8 +27,8 @@ const RegHolder = styled.div`
 
 `;
 const OuterBox = styled.div`
-  width: 250px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
   overflow: hidden;
   margin: 50px auto;
   box-sizing: border-box;
@@ -39,14 +39,14 @@ const RegBox = styled.div`
     flex-direction: column;
     border: 5px solid white;
     position: relative; 
-    width: 250px; 
-    height: 300px;
+    width: 500px; 
+    height: 500px;
     box-sizing: border-box;
 
 `;
 const BarTop = styled.div`
     position: absolute; 
-    width: 50px;
+    width: 150px;
     height: 5px;
     background: #2F9599;
     transition: all 1s linear;
@@ -58,7 +58,7 @@ const BarTop = styled.div`
 `;
 const BarBottomDelay = styled.div`
   position: absolute;
-  width: 50px;
+  width: 150px;
   height: 5px;
   background: #FF4E50;
   transition: all 1s linear;
@@ -71,41 +71,47 @@ const BarBottomDelay = styled.div`
 `;
 const BarRightDelay = styled.div`
   position: absolute;
-  width: 50px;
+  width: 150px;
   height: 5px;
   background: #F9D423;
   transition: all 1s linear;
   animation: ${vmove} 1s both infinite;
   animation-delay: 0.5s;
   top: 18px;
-  right: -28px;
+  right: -75px;
   transform: rotate(90deg);
   box-sizing: border-box;
 
 `;
 const BarLeft = styled.div`
   position: absolute;
-  width: 50px;
+  width: 150px;
   height: 5px;
-  background: #DCEDC2;
+  background: #cbf747;
   transition: all 1s linear;
   animation: ${vmove} 1s both infinite;
   top: 18px;
-  left: -28px;
+  left: -75px;
   transform: rotate(90deg);
   box-sizing: border-box;
 `;
 const InputBox = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center; 
+  align-items: center;
   margin: auto;
 `;
 const Input = styled.input`
-  width: 200px;
+  width: 450px;
   height: 30px;
-  margin: 5px;
+  margin: 20px;
+  text-fill-color: white !important;
+  text-decoration: none;
 `;
-
+const Btn = styled.button`
+    width: 400px
+`
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -166,6 +172,7 @@ class Login extends Component {
           <BarRightDelay/>
             <BarBottomDelay/>
             <BarLeft />
+            <h1>Welcome Back,</h1>
             <h1>Login</h1>
             <InputBox onSubmit={this.handleLogin}>
               <Input
@@ -182,7 +189,7 @@ class Login extends Component {
                 onChange={this.changeHandler}
               />
 
-              <button>Play</button>
+              <Btn>Play</Btn>
             </InputBox>
           </RegBox>
         </OuterBox>

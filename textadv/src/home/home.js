@@ -27,7 +27,7 @@ class Home extends Component{
         return(
         <AppHeader>
         <>
-          <NavItem to="/registration">Registration</NavItem>
+          <NavItem to="/registration">New User</NavItem>
           <NavItem className="nav-item" to="/login">Login</NavItem>
         </>
         </AppHeader>

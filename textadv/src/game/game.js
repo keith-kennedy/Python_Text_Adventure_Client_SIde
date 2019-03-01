@@ -31,7 +31,7 @@ const TextBox = styled.div`
   text-align: left;
   width: 100%;
   height: 350px;
-  border: 5px solid lightgray;
+  border: 3px solid #2F9599;
   border-radius: 20px;
   background: white;
   margin: 5px;
@@ -40,13 +40,14 @@ const TextBox = styled.div`
 const SideBox = styled.div`
   display: flex;
   text-align: left;
+  padding: 5px;
   width: 250px;
-  height: auto;
-  border: 5px solid lightgray;
+  height: 350px;
+  border: 3px solid #F9D423;
   border-radius: 20px;
   background: white;
   margin: 5px;
-  display: flex; 
+  display: flex;
   flex-direction: column;
 `;
 const GameInput = styled.input`
@@ -56,7 +57,7 @@ const GameInput = styled.input`
     height: 40px;
     border-radius: 10px; 
     text-decoration: none
-    border: 5px solid lightgray;
+    border: 3px solid #FC913A;
 `;
 const ConvoInvo = styled.div`
   display: flex;
@@ -67,7 +68,7 @@ const ConvoInvo = styled.div`
   border-radius: 20px;
   margin: 5px;
   background: white;
-  border: 5px solid lightgray;
+  border: 3px solid #FF4E50;
 `;
 const Room = styled.div`
   padding: 5px;
@@ -77,7 +78,7 @@ const TextBoxItem = styled.div`
 `;
 const PlayerItem = styled.div`
   margin: 5px 0;
-  color: blue; 
+  color: blue;
 `;
 const Msg = styled.div`
   margin: 5px 0;
@@ -88,12 +89,6 @@ const NavItem = styled(NavLink)`
   text-decoration: none;
   padding: 3px;
   font-size: 30px;
-
-  &:hover {
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-  }
 `;
 class Game extends Component {
   constructor() {
@@ -269,13 +264,13 @@ class Game extends Component {
         <GameHolder>
           <ContentHolder>
             <SideBox>
-               <h2> Movements:</h2>
-                <p>You will use your arrow keys to move around the rooms.</p>
-                <p>North ---- ↑</p>
-                <p>South ---- ↓</p>
-                <p>East ---- →</p>
-                <p>West ---- ←</p>
-                </SideBox>
+              <h2> Movements:</h2>
+              <p>You will use your arrow keys to move around the rooms.</p>
+              <p>North ---- ↑</p>
+              <p>South ---- ↓</p>
+              <p>East ---- →</p>
+              <p>West ---- ←</p>
+            </SideBox>
           </ContentHolder>
           <ContentHolder>
             <TextBox>
@@ -292,7 +287,9 @@ class Game extends Component {
                       <Room key={Math.random()}>
                         <TextBoxItem>{pastItem.title}</TextBoxItem>
                         <TextBoxItem>{pastItem.description}</TextBoxItem>
-                        <PlayerItem>Players in room: {pastItem.players.join(", ")}</PlayerItem>
+                        <PlayerItem>
+                          Players in room: {pastItem.players.join(", ")}
+                        </PlayerItem>
                       </Room>
                     );
                   }
@@ -314,12 +311,15 @@ class Game extends Component {
             </ConvoInvo>
           </ContentHolder>
           <ContentHolder>
-          <SideBox>
-               <h2> Keep an eye out for:</h2>
-                <p>Locations: will appear in Green </p>
-                <p>Players: will appear in Blue</p>
-                <p>Messages: will appear in red</p>
-                </SideBox>
+            <SideBox>
+              <h2> Keep an eye out for:</h2>
+              <p>Locations: will appear in Green </p>
+              <p>Players: will appear in Blue</p>
+              <p>Messages: will appear in red</p>
+              <h3> Keep an eye out for:</h3>
+              If you logout of the game your place will be saved when last
+              entered.
+            </SideBox>
           </ContentHolder>
         </GameHolder>
       </GamePage>

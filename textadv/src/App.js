@@ -7,6 +7,7 @@ import Registration from './registration/registration';
 import Login from './login/login'
 import styled from 'styled-components';
 import LandingPage from './landingPage/landing'; 
+import Background from "./background.js"; 
 
 const AppBackground = styled.div`
   text-align: center; 
@@ -23,6 +24,7 @@ class App extends Component {
   render() {
     return (
       <AppBackground>
+        <Background />
       <div>
       <div>
       <Home/> 
