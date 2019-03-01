@@ -1,6 +1,7 @@
 .particle {
     position: absolute;
     border-radius: 50%;
+    opacity: .6;
   }
   @keyframes particle-animation-1 {
     100% {
