@@ -12,10 +12,8 @@ const GamePage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
 `;
 const GameHolder = styled.div`
-  border: 1px solid black;
   width: 95%;
   height: auto;
   display: flex;
@@ -26,7 +24,6 @@ const GameHolder = styled.div`
 const ContentHolder = styled.div`
   width: auto;
   height: auto;
-  border: 1px solid red;
   margin: 15px;
 `;
 const TextBox = styled.div`
@@ -43,12 +40,14 @@ const TextBox = styled.div`
 const SideBox = styled.div`
   display: flex;
   text-align: left;
-  width: 70%;
-  height: 350px;
+  width: 250px;
+  height: auto;
   border: 5px solid lightgray;
   border-radius: 20px;
   background: white;
   margin: 5px;
+  display: flex; 
+  flex-direction: column;
 `;
 const GameInput = styled.input`
     width: 100%;
@@ -75,6 +74,10 @@ const Room = styled.div`
 `;
 const TextBoxItem = styled.div`
   margin: 5px 0;
+`;
+const PlayerItem = styled.div`
+  margin: 5px 0;
+  color: blue; 
 `;
 const Msg = styled.div`
   margin: 5px 0;
@@ -265,7 +268,14 @@ class Game extends Component {
       <GamePage>
         <GameHolder>
           <ContentHolder>
-            <SideBox />
+            <SideBox>
+               <h2> Movements:</h2>
+                <p>You will use your arrow keys to move around the rooms.</p>
+                <p>North ---- ↑</p>
+                <p>South ---- ↓</p>
+                <p>East ---- →</p>
+                <p>West ---- ←</p>
+                </SideBox>
           </ContentHolder>
           <ContentHolder>
             <TextBox>
@@ -282,7 +292,7 @@ class Game extends Component {
                       <Room key={Math.random()}>
                         <TextBoxItem>{pastItem.title}</TextBoxItem>
                         <TextBoxItem>{pastItem.description}</TextBoxItem>
-                        <TextBoxItem>{pastItem.players.join(", ")}</TextBoxItem>
+                        <PlayerItem>Players in room: {pastItem.players.join(", ")}</PlayerItem>
                       </Room>
                     );
                   }
@@ -304,7 +314,12 @@ class Game extends Component {
             </ConvoInvo>
           </ContentHolder>
           <ContentHolder>
-            <SideBox />
+          <SideBox>
+               <h2> Keep an eye out for:</h2>
+                <p>Locations: will appear in Green </p>
+                <p>Players: will appear in Blue</p>
+                <p>Messages: will appear in red</p>
+                </SideBox>
           </ContentHolder>
         </GameHolder>
       </GamePage>
