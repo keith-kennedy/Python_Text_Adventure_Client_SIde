@@ -13,7 +13,6 @@ const AppBackground = styled.div`
   text-align: center; 
   height: 100vh; 
 `
-
 class App extends Component {
  //handleLogin is used to retrieve the token and username from the api.
   handleLogin = (token, username) =>{
