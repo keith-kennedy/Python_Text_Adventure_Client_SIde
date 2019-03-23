@@ -188,7 +188,6 @@ class Login extends Component {
                 value={this.state.password}
                 onChange={this.changeHandler}
               />
-
               <Btn className="login-btn">Play</Btn>
             </InputBox>
           </RegBox>

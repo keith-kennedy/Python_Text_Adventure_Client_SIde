@@ -296,7 +296,7 @@ class Game extends Component {
                 })}
               </div>
             </TextBox>
-            <form onSubmit={this.message}>
+            <form className="messenger-form" onSubmit={this.message}>
               <GameInput
                 placeholder="Message other players"
                 onChange={this.changeHandler}
