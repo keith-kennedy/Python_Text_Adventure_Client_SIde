@@ -188,7 +188,7 @@ class Registration extends Component {
               onChange={this.changeHandler}
             />
             {/* <Route path="/games" render={props => <Game {...props}/>} /> */}
-            <Btn onClick={this.registerHandler}>Play</Btn>
+            <Btn className="registration-btn" onClick={this.registerHandler}>Play</Btn>
           </InputBox>
         </RegBox>
       </OuterBox>

@@ -306,7 +306,7 @@ class Game extends Component {
             </form>
             <ConvoInvo>
               <form onSubmit={this.logout}>
-                <NavItem to="/">Logout</NavItem>
+                <NavItem className="logout-btn" to="/">Logout</NavItem>
               </form>
             </ConvoInvo>
           </ContentHolder>

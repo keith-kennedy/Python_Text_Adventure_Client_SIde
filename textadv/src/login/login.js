@@ -189,7 +189,7 @@ class Login extends Component {
                 onChange={this.changeHandler}
               />
 
-              <Btn>Play</Btn>
+              <Btn className="login-btn">Play</Btn>
             </InputBox>
           </RegBox>
         </OuterBox>
