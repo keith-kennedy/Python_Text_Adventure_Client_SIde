@@ -168,7 +168,7 @@ class Registration extends Component {
           <BarLeft />
           <h1>Join the fun,</h1>
           <h1>Create a User</h1>
-          <InputBox>
+          <InputBox className="registration-form">
             <Input
               name="username"
               placeholder="Username"

@@ -174,7 +174,7 @@ class Login extends Component {
             <BarLeft />
             <h1>Welcome Back,</h1>
             <h1>Login</h1>
-            <InputBox onSubmit={this.handleLogin}>
+            <InputBox className="login-form" onSubmit={this.handleLogin}>
               <Input
                 placeholder="Username"
                 name="username"
